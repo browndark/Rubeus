@@ -395,4 +395,4 @@ if (!preg_match('/^[a-záéíóúãõç\s\'-]+$/i', $nome)) {
 ---
 
 **Data de Análise**: 27/02/2026  
-**Analista**: QA Automation Team
+**Analista**: Bruno Custodio de Castro
