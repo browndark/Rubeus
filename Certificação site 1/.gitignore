@@ -1,0 +1,62 @@
+# Dependencies
+node_modules/
+npm-debug.log*
+npm-shrinkwrap.json
+
+# Cypress
+cypress/screenshots/
+cypress/videos/
+cypress/download/
+cypress/reports/
+
+# Robot Framework
+robot/results/
+robot/screenshots/
+robot/*.paused
+.robot
+
+# Test results
+*.xml
+*.json
+postman/results.json
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*.sublime-project
+*.sublime-workspace
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Build
+dist/
+build/
+
+# Logs
+logs/
+*.log
+
+# Temporary files
+.tmp/
+temp/
+
+# Package manager lock files (optional)
+# package-lock.json
+yarn.lock
+
+# Coverage
+coverage/
+
+# Miscellaneous
+.cache/
+.venv/
+.Python

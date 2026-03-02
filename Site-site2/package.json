@@ -1,0 +1,32 @@
+{
+  "name": "site-site2-cypress",
+  "version": "1.0.0",
+  "description": "Testes Cypress para Site-site2 (QA Automation)",
+  "main": "cypress.config.js",
+  "scripts": {
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run",
+    "cypress:run:headless": "cypress run --headless",
+    "cypress:run:chrome": "cypress run --browser chrome",
+    "cypress:run:firefox": "cypress run --browser firefox",
+    "cypress:run:edge": "cypress run --browser edge",
+    "cypress:record": "cypress run --record --key c89a1e9e-5c9b-4f8a-8b8a-3c8a8a8a8a8a",
+    "cypress:debug": "cypress open --browser chrome --headed",
+    "test": "npm run cypress:run",
+    "test:watch": "npm run cypress:open"
+  },
+  "keywords": [
+    "cypress",
+    "e2e",
+    "testing",
+    "automation",
+    "site-site2"
+  ],
+  "author": "QA Automation Team",
+  "license": "MIT",
+  "devDependencies": {
+    "cypress": "^13.6.2",
+    "cypress-axe": "^1.2.3"
+  },
+  "dependencies": {}
+}

@@ -1,0 +1,118 @@
+image: node:22
+
+stages:
+  - install
+  - lint
+  - test
+  - report
+
+variables:
+  CYPRESS_BASE_URL: "https://qualidade.apprbs.com.br"
+  npm_config_cache: "$CI_PROJECT_DIR/.npm"
+  CYPRESS_CACHE_FOLDER: "$CI_PROJECT_DIR/cache/Cypress"
+
+cache:
+  key:
+    files:
+      - package-lock.json
+  paths:
+    - .npm/
+    - node_modules/
+    - cache/Cypress
+
+before_script:
+  - npm ci
+  - npm list cypress
+
+install_dependencies:
+  stage: install
+  script:
+    - npm ci --legacy-peer-deps
+  artifacts:
+    paths:
+      - node_modules/
+    expire_in: 1 day
+  cache:
+    key: "npm-$CI_COMMIT_REF_SLUG"
+    paths:
+      - .npm/
+      - node_modules/
+
+lint_code:
+  stage: lint
+  script:
+    - npm install --save-dev eslint eslint-plugin-cypress
+    - npx eslint cypress/e2e/*.js || true
+  allow_failure: true
+
+cypress_tests:
+  stage: test
+  image: mcr.microsoft.com/playwright:v1.40.0-focal
+  before_script:
+    - npm ci --legacy-peer-deps
+    - npm list cypress
+    - npx cypress verify
+  script:
+    - npm run cypress:headless
+  artifacts:
+    paths:
+      - cypress/screenshots/
+      - cypress/videos/
+      - cypress/reports/
+    expire_in: 30 days
+    when: always
+  retry:
+    max: 1
+    when:
+      - runner_system_failure
+      - stuck_or_timeout_failure
+
+postman_tests:
+  stage: test
+  before_script:
+    - npm ci --legacy-peer-deps
+  script:
+    - npm install -g newman
+    - mkdir -p postman/results
+    - newman run postman/certificacao_tests.json 
+        --environment postman/environment.json
+        --reporters cli,json
+        --reporter-json-export postman/results.json
+        --timeout 5000
+  artifacts:
+    paths:
+      - postman/results.json
+    expire_in: 30 days
+    when: always
+  allow_failure: true
+
+generate_html_report:
+  stage: report
+  before_script:
+    - npm ci --legacy-peer-deps
+  script:
+    - npm install --save-dev cypress-html-report
+    - mkdir -p cypress/reports
+    - npx cypress run --reporter cypress-html-report --reportDir cypress/reports || true
+  artifacts:
+    paths:
+      - cypress/reports/
+    expire_in: 60 days
+    when: always
+  allow_failure: true
+
+pages:
+  stage: report
+  dependencies:
+    - generate_html_report
+  script:
+    - mkdir -p public
+    - cp -r cypress/reports/* public/ || true
+    - echo "Reports available at: https://$CI_PROJECT_NAMESPACE.gitlab.io/$CI_PROJECT_NAME/"
+  artifacts:
+    paths:
+      - public
+    expire_in: 60 days
+  only:
+    - main
+  allow_failure: true

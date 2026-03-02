@@ -1,0 +1,54 @@
+{
+  "validUsers": [
+    {
+      "nome": "João Silva",
+      "email": "joao@example.com",
+      "telefone": "11999999999"
+    },
+    {
+      "nome": "Maria Santos",
+      "email": "maria@example.com",
+      "telefone": "21988888888"
+    },
+    {
+      "nome": "Pedro Oliveira",
+      "email": "pedro@example.com",
+      "telefone": "85987777777"
+    }
+  ],
+  "invalidUsers": [
+    {
+      "nome": "João123",
+      "email": "invalid-email",
+      "telefone": "abc"
+    },
+    {
+      "nome": "",
+      "email": "",
+      "telefone": ""
+    }
+  ],
+  "sqlInjectionPayloads": [
+    "' OR '1'='1",
+    "' OR 1=1--",
+    "admin'--",
+    "' UNION SELECT * FROM users--",
+    "1; DROP TABLE users--"
+  ],
+  "xssPayloads": [
+    "<script>alert('xss')</script>",
+    "javascript:alert('xss')",
+    "<img src=x onerror=alert('xss')>",
+    "\"><img src=x onerror=alert(1)>",
+    "<svg onload=alert('xss')>",
+    "<iframe src=javascript:alert('xss')>",
+    "<body onload=alert('xss')>"
+  ],
+  "specialCharacters": [
+    "!@#$%^&*()",
+    "éáíóú",
+    "日本語",
+    "العربية",
+    "Ελληνικά"
+  ]
+}

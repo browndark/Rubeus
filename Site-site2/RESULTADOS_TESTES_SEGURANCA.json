@@ -1,0 +1,34 @@
+{
+  "total_testes": 4,
+  "vulnerabilidades_encontradas": 4,
+  "testes": [
+    {
+      "teste": "SEC001 - SQL Injection",
+      "status": "VULNERABLE",
+      "payload": "' OR '1'='1",
+      "campo": "pessoa.nome",
+      "resultado": "Campo aceitou: ' OR '1'='1"
+    },
+    {
+      "teste": "SEC002 - XSS",
+      "status": "VULNERABLE",
+      "payload": "<script>alert('XSS')</script>",
+      "campo": "pessoa.emailPrincipal",
+      "resultado": "Campo aceitou: <script>alert('XSS')</script>"
+    },
+    {
+      "teste": "SEC003 - Validação Fraca",
+      "status": "VULNERABLE",
+      "payload": "João123Silva456",
+      "campo": "pessoa.nome",
+      "resultado": "Campo aceitou: João123Silva456"
+    },
+    {
+      "teste": "SEC004 - XSS Avançado",
+      "status": "VULNERABLE",
+      "payload": "\"><img src=x onerror=alert(1)>",
+      "campo": "pessoa.emailPrincipal",
+      "resultado": "Campo aceitou: ><img src=x onerror=alert(1)>"
+    }
+  ]
+}

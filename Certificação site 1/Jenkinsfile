@@ -1,0 +1,114 @@
+pipeline {
+    agent any
+    
+    options {
+        timestamps()
+        timeout(time: 30, unit: 'MINUTES')
+        buildDiscarder(logRotator(numToKeepStr: '10'))
+    }
+    
+    environment {
+        NODE_ENV = 'test'
+        CYPRESS_BASE_URL = 'https://qualidade.apprbs.com.br'
+        REPORT_DIR = 'cypress/reports'
+    }
+    
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+                echo "✓ Code checked out successfully"
+            }
+        }
+        
+        stage('Setup') {
+            steps {
+                script {
+                    sh 'node --version'
+                    sh 'npm --version'
+                }
+                sh 'npm install'
+                echo "✓ Dependencies installed"
+            }
+        }
+        
+        stage('Lint') {
+            steps {
+                sh 'npm install --save-dev eslint'
+                sh 'npx eslint cypress/e2e/*.js || true'
+                echo "✓ Code linting completed"
+            }
+        }
+        
+        stage('Cypress Tests') {
+            steps {
+                script {
+                    try {
+                        sh 'npx cypress run --browser chrome --headless'
+                    } catch (Exception e) {
+                        echo "⚠ Some tests failed, continuing to collect reports"
+                    }
+                }
+            }
+        }
+        
+        stage('API Tests') {
+            steps {
+                script {
+                    try {
+                        sh 'npm install --save-dev newman'
+                        sh '''
+                            npx newman run postman/certificacao_tests.json \\
+                                --reporters cli,json \\
+                                --reporter-json-export postman/results.json || true
+                        '''
+                    } catch (Exception e) {
+                        echo "⚠ API tests had issues, but continuing"
+                    }
+                }
+            }
+        }
+        
+        stage('Generate Reports') {
+            steps {
+                script {
+                    sh 'npm install --save-dev cypress-html-report'
+                    sh 'npx cypress run --reporter cypress-html-report --reportDir ${REPORT_DIR} || true'
+                }
+            }
+        }
+    }
+    
+    post {
+        always {
+            // Cypress screenshots
+            archiveArtifacts artifacts: 'cypress/screenshots/**/*', allowEmptyArchive: true
+            
+            // Cypress videos
+            archiveArtifacts artifacts: 'cypress/videos/**/*', allowEmptyArchive: true
+            
+            // HTML reports
+            archiveArtifacts artifacts: '${REPORT_DIR}/**/*', allowEmptyArchive: true
+            
+            // Postman results
+            archiveArtifacts artifacts: 'postman/results.json', allowEmptyArchive: true
+            
+            // JUnit XML for Jenkins integration
+            junit 'cypress/results/*.xml', allowEmptyResults: true
+            
+            // Cleanup
+            cleanWs(deleteDirs: true, patterns: [
+                [pattern: 'node_modules/', type: 'INCLUDE'],
+                [pattern: 'cypress/reports/temp/', type: 'INCLUDE']
+            ])
+        }
+        
+        success {
+            echo "✓ Pipeline completed successfully!"
+        }
+        
+        failure {
+            echo "✗ Pipeline failed. Check artifacts for details."
+        }
+    }
+}

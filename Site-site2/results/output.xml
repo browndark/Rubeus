@@ -1,0 +1,1141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.0 (Python 3.13.7 on win32)" generated="2026-03-02T16:04:04.143811" rpa="false" schemaversion="5">
+<suite id="s1" name="Site Tests" source="C:\Users\bruno\OneDrive\Desktop\Avalição\Site-site2\robot\tests\site_tests.robot">
+<test id="s1-t1" name="EDGE02 - Caracteres Especiais XSS" line="124">
+<kw name="Abrir Navegador" owner="site_keywords">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-03-02T16:04:04.327947" level="INFO">Opening browser 'chrome' to base url 'https://qualidade.apprbs.com.br/site'.</msg>
+<arg>${BASE_URL}</arg>
+<arg>chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-03-02T16:04:04.327751" elapsed="1.805136"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2026-03-02T16:04:06.133080" elapsed="0.025644"/>
+</kw>
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>${FORM_CONTAINER}</arg>
+<arg>${TIMEOUT_PADRAO}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2026-03-02T16:04:06.158902" elapsed="0.216719"/>
+</kw>
+<doc>Abre o browser e acessa o site</doc>
+<status status="PASS" start="2026-03-02T16:04:04.327170" elapsed="2.048590"/>
+</kw>
+<kw name="Preencher Campo Nome" owner="site_keywords">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-03-02T16:04:06.376651" level="INFO">Typing text '&lt;script&gt;alert('XSS')&lt;/script&gt;' into text field '//input[@name="pessoa.nome"]'.</msg>
+<arg>${INPUT_NOME}</arg>
+<arg>${nome}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-03-02T16:04:06.376476" elapsed="0.100894"/>
+</kw>
+<arg>&lt;script&gt;alert('XSS')&lt;/script&gt;</arg>
+<doc>Preenche o campo de nome</doc>
+<status status="PASS" start="2026-03-02T16:04:06.376183" elapsed="0.101290"/>
+</kw>
+<kw name="Preencher Campo Email" owner="site_keywords">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-03-02T16:04:06.478161" level="INFO">Typing text 'test@example.com' into text field '//input[@name="pessoa.emailPrincipal"]'.</msg>
+<arg>${INPUT_EMAIL}</arg>
+<arg>${email}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-03-02T16:04:06.478007" elapsed="0.057569"/>
+</kw>
+<arg>test@example.com</arg>
+<doc>Preenche o campo de email</doc>
+<status status="PASS" start="2026-03-02T16:04:06.477798" elapsed="0.057878"/>
+</kw>
+<kw name="Submeter Formulário" owner="site_keywords">
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2026-03-02T16:04:06.536383" level="INFO">Clicking button '(//button)[2]'.</msg>
+<msg time="2026-03-02T16:04:06.712545" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-50.png"&gt;&lt;img src="selenium-screenshot-50.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg time="2026-03-02T16:04:06.712728" level="FAIL">ElementNotInteractableException: Message: element not interactable
+  (Session info: chrome=145.0.7632.117)
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0x7ff7d1caaa55
+	0x7ff7d1a08630
+	0x7ff7d179d546
+	0x7ff7d17f9bd4
+	0x7ff7d17eb426
+	0x7ff7d18219da
+	0x7ff7d17eaca6
+	0x7ff7d184591c
+	0x7ff7d17e9098
+	0x7ff7d17e9f83
+	0x7ff7d1cd7810
+	0x7ff7d1cd1afd
+	0x7ff7d1cf2c1a
+	0x7ff7d1a23345
+	0x7ff7d1a2b81c
+	0x7ff7d1a11924
+	0x7ff7d1a11ad6
+	0x7ff7d19f7e47
+	0x7fff77357374
+	0x7fff77cbcc91
+</msg>
+<arg>${BUTTON_SUBMIT}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="FAIL" start="2026-03-02T16:04:06.536218" elapsed="0.188079">ElementNotInteractableException: Message: element not interactable
+  (Session info: chrome=145.0.7632.117)
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0x7ff7d1caaa55
+	0x7ff7d1a08630
+	0x7ff7d179d546
+	0x7ff7d17f9bd4
+	0x7ff7d17eb426
+	0x7ff7d18219da
+	0x7ff7d17eaca6
+	0x7ff7d184591c
+	0x7ff7d17e9098
+	0x7ff7d17e9f83
+	0x7ff7d1cd7810
+	0x7ff7d1cd1afd
+	0x7ff7d1cf2c1a
+	0x7ff7d1a23345
+	0x7ff7d1a2b81c
+	0x7ff7d1a11924
+	0x7ff7d1a11ad6
+	0x7ff7d19f7e47
+	0x7fff77357374
+	0x7fff77cbcc91
+</status>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2026-03-02T16:04:06.724463" elapsed="0.000023"/>
+</kw>
+<doc>Clica no botão de submissão</doc>
+<status status="FAIL" start="2026-03-02T16:04:06.536016" elapsed="0.188573">ElementNotInteractableException: Message: element not interactable
+  (Session info: chrome=145.0.7632.117)
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0x7ff7d1caaa55
+	0x7ff7d1a08630
+	0x7ff7d179d546
+	0x7ff7d17f9bd4
+	0x7ff7d17eb426
+	0x7ff7d18219da
+	0x7ff7d17eaca6
+	0x7ff7d184591c
+	0x7ff7d17e9098
+	0x7ff7d17e9f83
+	0x7ff7d1cd7810
+	0x7ff7d1cd1afd
+	0x7ff7d1cf2c1a
+	0x7ff7d1a23345
+	0x7ff7d1a2b81c
+	0x7ff7d1a11924
+	0x7ff7d1a11ad6
+	0x7ff7d19f7e47
+	0x7fff77357374
+	0x7fff77cbcc91
+</status>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2026-03-02T16:04:06.724861" elapsed="0.000022"/>
+</kw>
+<kw name="Fechar Navegador" owner="site_keywords" type="TEARDOWN">
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2026-03-02T16:04:06.725394" elapsed="2.106631"/>
+</kw>
+<doc>Fecha o navegador</doc>
+<status status="PASS" start="2026-03-02T16:04:06.725209" elapsed="2.106922"/>
+</kw>
+<doc>Testa proteção contra XSS</doc>
+<tag>alta</tag>
+<tag>segurança</tag>
+<status status="FAIL" start="2026-03-02T16:04:04.326665" elapsed="4.505714">ElementNotInteractableException: Message: element not interactable
+  (Session info: chrome=145.0.7632.117)
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0x7ff7d1caaa55
+	0x7ff7d1a08630
+	0x7ff7d179d546
+	0x7ff7d17f9bd4
+	0x7ff7d17eb426
+	0x7ff7d18219da
+	0x7ff7d17eaca6
+	0x7ff7d184591c
+	0x7ff7d17e9098
+	0x7ff7d17e9f83
+	0x7ff7d1cd7810
+	0x7ff7d1cd1afd
+	0x7ff7d1cf2c1a
+	0x7ff7d1a23345
+	0x7ff7d1a2b81c
+	0x7ff7d1a11924
+	0x7ff7d1a11ad6
+	0x7ff7d19f7e47
+	0x7fff77357374
+	0x7fff77cbcc91
+</status>
+</test>
+<test id="s1-t2" name="SEC001 - SQL Injection no Campo Nome" line="191">
+<kw name="Abrir Navegador" owner="site_keywords">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-03-02T16:04:08.834401" level="INFO">Opening browser 'chrome' to base url 'https://qualidade.apprbs.com.br/site'.</msg>
+<arg>${BASE_URL}</arg>
+<arg>chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-03-02T16:04:08.834260" elapsed="1.715274"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2026-03-02T16:04:10.549752" elapsed="0.033587"/>
+</kw>
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>${FORM_CONTAINER}</arg>
+<arg>${TIMEOUT_PADRAO}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2026-03-02T16:04:10.583503" elapsed="0.219252"/>
+</kw>
+<doc>Abre o browser e acessa o site</doc>
+<status status="PASS" start="2026-03-02T16:04:08.834063" elapsed="1.968810"/>
+</kw>
+<kw name="Preencher Campo Nome" owner="site_keywords">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-03-02T16:04:10.803740" level="INFO">Typing text '' OR '1'='1' into text field '//input[@name="pessoa.nome"]'.</msg>
+<arg>${INPUT_NOME}</arg>
+<arg>${nome}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-03-02T16:04:10.803551" elapsed="0.107791"/>
+</kw>
+<arg>' OR '1'='1</arg>
+<doc>Preenche o campo de nome</doc>
+<status status="PASS" start="2026-03-02T16:04:10.803275" elapsed="0.108164"/>
+</kw>
+<kw name="Preencher Campo Email" owner="site_keywords">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-03-02T16:04:10.912248" level="INFO">Typing text 'teste@example.com' into text field '//input[@name="pessoa.emailPrincipal"]'.</msg>
+<arg>${INPUT_EMAIL}</arg>
+<arg>${email}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-03-02T16:04:10.912092" elapsed="0.062258"/>
+</kw>
+<arg>teste@example.com</arg>
+<doc>Preenche o campo de email</doc>
+<status status="PASS" start="2026-03-02T16:04:10.911877" elapsed="0.062574"/>
+</kw>
+<kw name="Preencher Campo Telefone" owner="site_keywords">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-03-02T16:04:10.975162" level="INFO">Typing text '(11) 99999-9999' into text field '//input[@name="pessoa.telefonePrincipal"]'.</msg>
+<arg>${INPUT_TELEFONE}</arg>
+<arg>${telefone}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-03-02T16:04:10.974997" elapsed="0.062575"/>
+</kw>
+<arg>(11) 99999-9999</arg>
+<doc>Preenche o campo de telefone</doc>
+<status status="PASS" start="2026-03-02T16:04:10.974780" elapsed="0.062906"/>
+</kw>
+<kw name="Submeter Formulário" owner="site_keywords">
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2026-03-02T16:04:11.038707" level="INFO">Clicking button '(//button)[2]'.</msg>
+<msg time="2026-03-02T16:04:11.268082" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-51.png"&gt;&lt;img src="selenium-screenshot-51.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg time="2026-03-02T16:04:11.268291" level="FAIL">ElementNotInteractableException: Message: element not interactable
+  (Session info: chrome=145.0.7632.117)
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0x7ff7d1caaa55
+	0x7ff7d1a08630
+	0x7ff7d179d546
+	0x7ff7d17f9bd4
+	0x7ff7d17eb426
+	0x7ff7d18219da
+	0x7ff7d17eaca6
+	0x7ff7d184591c
+	0x7ff7d17e9098
+	0x7ff7d17e9f83
+	0x7ff7d1cd7810
+	0x7ff7d1cd1afd
+	0x7ff7d1cf2c1a
+	0x7ff7d1a23345
+	0x7ff7d1a2b81c
+	0x7ff7d1a11924
+	0x7ff7d1a11ad6
+	0x7ff7d19f7e47
+	0x7fff77357374
+	0x7fff77cbcc91
+</msg>
+<arg>${BUTTON_SUBMIT}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="FAIL" start="2026-03-02T16:04:11.038481" elapsed="0.230972">ElementNotInteractableException: Message: element not interactable
+  (Session info: chrome=145.0.7632.117)
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0x7ff7d1caaa55
+	0x7ff7d1a08630
+	0x7ff7d179d546
+	0x7ff7d17f9bd4
+	0x7ff7d17eb426
+	0x7ff7d18219da
+	0x7ff7d17eaca6
+	0x7ff7d184591c
+	0x7ff7d17e9098
+	0x7ff7d17e9f83
+	0x7ff7d1cd7810
+	0x7ff7d1cd1afd
+	0x7ff7d1cf2c1a
+	0x7ff7d1a23345
+	0x7ff7d1a2b81c
+	0x7ff7d1a11924
+	0x7ff7d1a11ad6
+	0x7ff7d19f7e47
+	0x7fff77357374
+	0x7fff77cbcc91
+</status>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2026-03-02T16:04:11.269681" elapsed="0.000041"/>
+</kw>
+<doc>Clica no botão de submissão</doc>
+<status status="FAIL" start="2026-03-02T16:04:11.038137" elapsed="0.231808">ElementNotInteractableException: Message: element not interactable
+  (Session info: chrome=145.0.7632.117)
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0x7ff7d1caaa55
+	0x7ff7d1a08630
+	0x7ff7d179d546
+	0x7ff7d17f9bd4
+	0x7ff7d17eb426
+	0x7ff7d18219da
+	0x7ff7d17eaca6
+	0x7ff7d184591c
+	0x7ff7d17e9098
+	0x7ff7d17e9f83
+	0x7ff7d1cd7810
+	0x7ff7d1cd1afd
+	0x7ff7d1cf2c1a
+	0x7ff7d1a23345
+	0x7ff7d1a2b81c
+	0x7ff7d1a11924
+	0x7ff7d1a11ad6
+	0x7ff7d19f7e47
+	0x7fff77357374
+	0x7fff77cbcc91
+</status>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2026-03-02T16:04:11.270369" elapsed="0.000028"/>
+</kw>
+<kw name="Fechar Navegador" owner="site_keywords" type="TEARDOWN">
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2026-03-02T16:04:11.270954" elapsed="2.092050"/>
+</kw>
+<doc>Fecha o navegador</doc>
+<status status="PASS" start="2026-03-02T16:04:11.270754" elapsed="2.092377"/>
+</kw>
+<doc>Testa proteção contra SQL Injection - ISSUE #006 - Entrada: ' OR '1'='1</doc>
+<tag>crítica</tag>
+<tag>segurança</tag>
+<tag>sql_injection</tag>
+<status status="FAIL" start="2026-03-02T16:04:08.833650" elapsed="4.529740">ElementNotInteractableException: Message: element not interactable
+  (Session info: chrome=145.0.7632.117)
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0x7ff7d1caaa55
+	0x7ff7d1a08630
+	0x7ff7d179d546
+	0x7ff7d17f9bd4
+	0x7ff7d17eb426
+	0x7ff7d18219da
+	0x7ff7d17eaca6
+	0x7ff7d184591c
+	0x7ff7d17e9098
+	0x7ff7d17e9f83
+	0x7ff7d1cd7810
+	0x7ff7d1cd1afd
+	0x7ff7d1cf2c1a
+	0x7ff7d1a23345
+	0x7ff7d1a2b81c
+	0x7ff7d1a11924
+	0x7ff7d1a11ad6
+	0x7ff7d19f7e47
+	0x7fff77357374
+	0x7fff77cbcc91
+</status>
+</test>
+<test id="s1-t3" name="SEC002 - XSS no Campo Email" line="202">
+<kw name="Abrir Navegador" owner="site_keywords">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-03-02T16:04:13.365341" level="INFO">Opening browser 'chrome' to base url 'https://qualidade.apprbs.com.br/site'.</msg>
+<arg>${BASE_URL}</arg>
+<arg>chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-03-02T16:04:13.365201" elapsed="1.762458"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2026-03-02T16:04:15.127828" elapsed="0.021574"/>
+</kw>
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>${FORM_CONTAINER}</arg>
+<arg>${TIMEOUT_PADRAO}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2026-03-02T16:04:15.149556" elapsed="0.215627"/>
+</kw>
+<doc>Abre o browser e acessa o site</doc>
+<status status="PASS" start="2026-03-02T16:04:13.364998" elapsed="2.000280"/>
+</kw>
+<kw name="Preencher Campo Nome" owner="site_keywords">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-03-02T16:04:15.366012" level="INFO">Typing text 'João Silva' into text field '//input[@name="pessoa.nome"]'.</msg>
+<arg>${INPUT_NOME}</arg>
+<arg>${nome}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-03-02T16:04:15.365851" elapsed="0.100206"/>
+</kw>
+<arg>João Silva</arg>
+<doc>Preenche o campo de nome</doc>
+<status status="PASS" start="2026-03-02T16:04:15.365614" elapsed="0.100548"/>
+</kw>
+<kw name="Preencher Campo Email" owner="site_keywords">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-03-02T16:04:15.466938" level="INFO">Typing text '&lt;script&gt;alert('xss')&lt;/script&gt;' into text field '//input[@name="pessoa.emailPrincipal"]'.</msg>
+<arg>${INPUT_EMAIL}</arg>
+<arg>${email}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-03-02T16:04:15.466774" elapsed="0.067766"/>
+</kw>
+<arg>&lt;script&gt;alert('xss')&lt;/script&gt;</arg>
+<doc>Preenche o campo de email</doc>
+<status status="PASS" start="2026-03-02T16:04:15.466522" elapsed="0.068112"/>
+</kw>
+<kw name="Preencher Campo Telefone" owner="site_keywords">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-03-02T16:04:15.535343" level="INFO">Typing text '(11) 99999-9999' into text field '//input[@name="pessoa.telefonePrincipal"]'.</msg>
+<arg>${INPUT_TELEFONE}</arg>
+<arg>${telefone}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-03-02T16:04:15.535190" elapsed="0.068205"/>
+</kw>
+<arg>(11) 99999-9999</arg>
+<doc>Preenche o campo de telefone</doc>
+<status status="PASS" start="2026-03-02T16:04:15.534967" elapsed="0.068566"/>
+</kw>
+<kw name="Submeter Formulário" owner="site_keywords">
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2026-03-02T16:04:15.604405" level="INFO">Clicking button '(//button)[2]'.</msg>
+<msg time="2026-03-02T16:04:15.792575" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-52.png"&gt;&lt;img src="selenium-screenshot-52.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg time="2026-03-02T16:04:15.792804" level="FAIL">ElementNotInteractableException: Message: element not interactable
+  (Session info: chrome=145.0.7632.117)
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0x7ff7d1caaa55
+	0x7ff7d1a08630
+	0x7ff7d179d546
+	0x7ff7d17f9bd4
+	0x7ff7d17eb426
+	0x7ff7d18219da
+	0x7ff7d17eaca6
+	0x7ff7d184591c
+	0x7ff7d17e9098
+	0x7ff7d17e9f83
+	0x7ff7d1cd7810
+	0x7ff7d1cd1afd
+	0x7ff7d1cf2c1a
+	0x7ff7d1a23345
+	0x7ff7d1a2b81c
+	0x7ff7d1a11924
+	0x7ff7d1a11ad6
+	0x7ff7d19f7e47
+	0x7fff77357374
+	0x7fff77cbcc91
+</msg>
+<arg>${BUTTON_SUBMIT}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="FAIL" start="2026-03-02T16:04:15.604229" elapsed="0.190077">ElementNotInteractableException: Message: element not interactable
+  (Session info: chrome=145.0.7632.117)
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0x7ff7d1caaa55
+	0x7ff7d1a08630
+	0x7ff7d179d546
+	0x7ff7d17f9bd4
+	0x7ff7d17eb426
+	0x7ff7d18219da
+	0x7ff7d17eaca6
+	0x7ff7d184591c
+	0x7ff7d17e9098
+	0x7ff7d17e9f83
+	0x7ff7d1cd7810
+	0x7ff7d1cd1afd
+	0x7ff7d1cf2c1a
+	0x7ff7d1a23345
+	0x7ff7d1a2b81c
+	0x7ff7d1a11924
+	0x7ff7d1a11ad6
+	0x7ff7d19f7e47
+	0x7fff77357374
+	0x7fff77cbcc91
+</status>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2026-03-02T16:04:15.794515" elapsed="0.000038"/>
+</kw>
+<doc>Clica no botão de submissão</doc>
+<status status="FAIL" start="2026-03-02T16:04:15.603906" elapsed="0.190769">ElementNotInteractableException: Message: element not interactable
+  (Session info: chrome=145.0.7632.117)
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0x7ff7d1caaa55
+	0x7ff7d1a08630
+	0x7ff7d179d546
+	0x7ff7d17f9bd4
+	0x7ff7d17eb426
+	0x7ff7d18219da
+	0x7ff7d17eaca6
+	0x7ff7d184591c
+	0x7ff7d17e9098
+	0x7ff7d17e9f83
+	0x7ff7d1cd7810
+	0x7ff7d1cd1afd
+	0x7ff7d1cf2c1a
+	0x7ff7d1a23345
+	0x7ff7d1a2b81c
+	0x7ff7d1a11924
+	0x7ff7d1a11ad6
+	0x7ff7d19f7e47
+	0x7fff77357374
+	0x7fff77cbcc91
+</status>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2026-03-02T16:04:15.795075" elapsed="0.000021"/>
+</kw>
+<kw name="Fechar Navegador" owner="site_keywords" type="TEARDOWN">
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2026-03-02T16:04:15.795562" elapsed="2.092991"/>
+</kw>
+<doc>Fecha o navegador</doc>
+<status status="PASS" start="2026-03-02T16:04:15.795386" elapsed="2.093288"/>
+</kw>
+<doc>Testa proteção contra XSS - ISSUE #007 - Entrada: &lt;script&gt;alert('xss')&lt;/script&gt;</doc>
+<tag>crítica</tag>
+<tag>segurança</tag>
+<tag>xss</tag>
+<status status="FAIL" start="2026-03-02T16:04:13.364575" elapsed="4.524345">ElementNotInteractableException: Message: element not interactable
+  (Session info: chrome=145.0.7632.117)
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0x7ff7d1caaa55
+	0x7ff7d1a08630
+	0x7ff7d179d546
+	0x7ff7d17f9bd4
+	0x7ff7d17eb426
+	0x7ff7d18219da
+	0x7ff7d17eaca6
+	0x7ff7d184591c
+	0x7ff7d17e9098
+	0x7ff7d17e9f83
+	0x7ff7d1cd7810
+	0x7ff7d1cd1afd
+	0x7ff7d1cf2c1a
+	0x7ff7d1a23345
+	0x7ff7d1a2b81c
+	0x7ff7d1a11924
+	0x7ff7d1a11ad6
+	0x7ff7d19f7e47
+	0x7fff77357374
+	0x7fff77cbcc91
+</status>
+</test>
+<test id="s1-t4" name="SEC003 - Números no Campo Nome" line="213">
+<kw name="Abrir Navegador" owner="site_keywords">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-03-02T16:04:17.890747" level="INFO">Opening browser 'chrome' to base url 'https://qualidade.apprbs.com.br/site'.</msg>
+<arg>${BASE_URL}</arg>
+<arg>chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-03-02T16:04:17.890607" elapsed="1.667740"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2026-03-02T16:04:19.558513" elapsed="0.024896"/>
+</kw>
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>${FORM_CONTAINER}</arg>
+<arg>${TIMEOUT_PADRAO}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2026-03-02T16:04:19.583577" elapsed="0.216611"/>
+</kw>
+<doc>Abre o browser e acessa o site</doc>
+<status status="PASS" start="2026-03-02T16:04:17.890409" elapsed="1.909874"/>
+</kw>
+<kw name="Preencher Campo Nome" owner="site_keywords">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-03-02T16:04:19.800963" level="INFO">Typing text 'João123Silva456' into text field '//input[@name="pessoa.nome"]'.</msg>
+<arg>${INPUT_NOME}</arg>
+<arg>${nome}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-03-02T16:04:19.800813" elapsed="0.104692"/>
+</kw>
+<arg>João123Silva456</arg>
+<doc>Preenche o campo de nome</doc>
+<status status="PASS" start="2026-03-02T16:04:19.800603" elapsed="0.105030"/>
+</kw>
+<kw name="Preencher Campo Email" owner="site_keywords">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-03-02T16:04:19.906436" level="INFO">Typing text 'joao@example.com' into text field '//input[@name="pessoa.emailPrincipal"]'.</msg>
+<arg>${INPUT_EMAIL}</arg>
+<arg>${email}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-03-02T16:04:19.906275" elapsed="0.057246"/>
+</kw>
+<arg>joao@example.com</arg>
+<doc>Preenche o campo de email</doc>
+<status status="PASS" start="2026-03-02T16:04:19.906041" elapsed="0.057577"/>
+</kw>
+<kw name="Preencher Campo Telefone" owner="site_keywords">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-03-02T16:04:19.964379" level="INFO">Typing text '(11) 99999-9999' into text field '//input[@name="pessoa.telefonePrincipal"]'.</msg>
+<arg>${INPUT_TELEFONE}</arg>
+<arg>${telefone}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-03-02T16:04:19.964204" elapsed="0.067345"/>
+</kw>
+<arg>(11) 99999-9999</arg>
+<doc>Preenche o campo de telefone</doc>
+<status status="PASS" start="2026-03-02T16:04:19.963962" elapsed="0.067742"/>
+</kw>
+<kw name="Submeter Formulário" owner="site_keywords">
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2026-03-02T16:04:20.032774" level="INFO">Clicking button '(//button)[2]'.</msg>
+<msg time="2026-03-02T16:04:20.222185" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-53.png"&gt;&lt;img src="selenium-screenshot-53.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg time="2026-03-02T16:04:20.222368" level="FAIL">ElementNotInteractableException: Message: element not interactable
+  (Session info: chrome=145.0.7632.117)
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0x7ff7d1caaa55
+	0x7ff7d1a08630
+	0x7ff7d179d546
+	0x7ff7d17f9bd4
+	0x7ff7d17eb426
+	0x7ff7d18219da
+	0x7ff7d17eaca6
+	0x7ff7d184591c
+	0x7ff7d17e9098
+	0x7ff7d17e9f83
+	0x7ff7d1cd7810
+	0x7ff7d1cd1afd
+	0x7ff7d1cf2c1a
+	0x7ff7d1a23345
+	0x7ff7d1a2b81c
+	0x7ff7d1a11924
+	0x7ff7d1a11ad6
+	0x7ff7d19f7e47
+	0x7fff77357374
+	0x7fff77cbcc91
+</msg>
+<arg>${BUTTON_SUBMIT}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="FAIL" start="2026-03-02T16:04:20.032564" elapsed="0.190895">ElementNotInteractableException: Message: element not interactable
+  (Session info: chrome=145.0.7632.117)
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0x7ff7d1caaa55
+	0x7ff7d1a08630
+	0x7ff7d179d546
+	0x7ff7d17f9bd4
+	0x7ff7d17eb426
+	0x7ff7d18219da
+	0x7ff7d17eaca6
+	0x7ff7d184591c
+	0x7ff7d17e9098
+	0x7ff7d17e9f83
+	0x7ff7d1cd7810
+	0x7ff7d1cd1afd
+	0x7ff7d1cf2c1a
+	0x7ff7d1a23345
+	0x7ff7d1a2b81c
+	0x7ff7d1a11924
+	0x7ff7d1a11ad6
+	0x7ff7d19f7e47
+	0x7fff77357374
+	0x7fff77cbcc91
+</status>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2026-03-02T16:04:20.223644" elapsed="0.000024"/>
+</kw>
+<doc>Clica no botão de submissão</doc>
+<status status="FAIL" start="2026-03-02T16:04:20.032234" elapsed="0.191520">ElementNotInteractableException: Message: element not interactable
+  (Session info: chrome=145.0.7632.117)
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0x7ff7d1caaa55
+	0x7ff7d1a08630
+	0x7ff7d179d546
+	0x7ff7d17f9bd4
+	0x7ff7d17eb426
+	0x7ff7d18219da
+	0x7ff7d17eaca6
+	0x7ff7d184591c
+	0x7ff7d17e9098
+	0x7ff7d17e9f83
+	0x7ff7d1cd7810
+	0x7ff7d1cd1afd
+	0x7ff7d1cf2c1a
+	0x7ff7d1a23345
+	0x7ff7d1a2b81c
+	0x7ff7d1a11924
+	0x7ff7d1a11ad6
+	0x7ff7d19f7e47
+	0x7fff77357374
+	0x7fff77cbcc91
+</status>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2026-03-02T16:04:20.224106" elapsed="0.000020"/>
+</kw>
+<kw name="Fechar Navegador" owner="site_keywords" type="TEARDOWN">
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2026-03-02T16:04:20.224628" elapsed="2.084741"/>
+</kw>
+<doc>Fecha o navegador</doc>
+<status status="PASS" start="2026-03-02T16:04:20.224416" elapsed="2.085068"/>
+</kw>
+<doc>Testa validação de tipo - ISSUE #008 - Entrada: João123Silva456</doc>
+<tag>média</tag>
+<tag>segurança</tag>
+<tag>validação</tag>
+<status status="FAIL" start="2026-03-02T16:04:17.890027" elapsed="4.419698">ElementNotInteractableException: Message: element not interactable
+  (Session info: chrome=145.0.7632.117)
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0x7ff7d1caaa55
+	0x7ff7d1a08630
+	0x7ff7d179d546
+	0x7ff7d17f9bd4
+	0x7ff7d17eb426
+	0x7ff7d18219da
+	0x7ff7d17eaca6
+	0x7ff7d184591c
+	0x7ff7d17e9098
+	0x7ff7d17e9f83
+	0x7ff7d1cd7810
+	0x7ff7d1cd1afd
+	0x7ff7d1cf2c1a
+	0x7ff7d1a23345
+	0x7ff7d1a2b81c
+	0x7ff7d1a11924
+	0x7ff7d1a11ad6
+	0x7ff7d19f7e47
+	0x7fff77357374
+	0x7fff77cbcc91
+</status>
+</test>
+<test id="s1-t5" name="SEC004 - Múltiplos Testes de XSS" line="224">
+<kw name="Abrir Navegador" owner="site_keywords">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-03-02T16:04:22.311647" level="INFO">Opening browser 'chrome' to base url 'https://qualidade.apprbs.com.br/site'.</msg>
+<arg>${BASE_URL}</arg>
+<arg>chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-03-02T16:04:22.311516" elapsed="1.682123"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2026-03-02T16:04:23.993810" elapsed="0.023361"/>
+</kw>
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>${FORM_CONTAINER}</arg>
+<arg>${TIMEOUT_PADRAO}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2026-03-02T16:04:24.017336" elapsed="0.218017"/>
+</kw>
+<doc>Abre o browser e acessa o site</doc>
+<status status="PASS" start="2026-03-02T16:04:22.311331" elapsed="1.924139"/>
+</kw>
+<kw name="Preencher Campo Nome" owner="site_keywords">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-03-02T16:04:24.236538" level="INFO">Typing text 'João Silva' into text field '//input[@name="pessoa.nome"]'.</msg>
+<arg>${INPUT_NOME}</arg>
+<arg>${nome}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-03-02T16:04:24.236286" elapsed="0.096768"/>
+</kw>
+<arg>João Silva</arg>
+<doc>Preenche o campo de nome</doc>
+<status status="PASS" start="2026-03-02T16:04:24.235926" elapsed="0.097228"/>
+</kw>
+<kw name="Preencher Campo Email" owner="site_keywords">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-03-02T16:04:24.333819" level="INFO">Typing text '"&gt;&lt;script&gt;alert(1)&lt;/script&gt;' into text field '//input[@name="pessoa.emailPrincipal"]'.</msg>
+<arg>${INPUT_EMAIL}</arg>
+<arg>${email}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-03-02T16:04:24.333671" elapsed="0.072549"/>
+</kw>
+<arg>"&gt;&lt;script&gt;alert(1)&lt;/script&gt;</arg>
+<doc>Preenche o campo de email</doc>
+<status status="PASS" start="2026-03-02T16:04:24.333463" elapsed="0.072860"/>
+</kw>
+<kw name="Submeter Formulário" owner="site_keywords">
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2026-03-02T16:04:24.406996" level="INFO">Clicking button '(//button)[2]'.</msg>
+<msg time="2026-03-02T16:04:24.579889" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-54.png"&gt;&lt;img src="selenium-screenshot-54.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg time="2026-03-02T16:04:24.580009" level="FAIL">ElementNotInteractableException: Message: element not interactable
+  (Session info: chrome=145.0.7632.117)
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0x7ff7d1caaa55
+	0x7ff7d1a08630
+	0x7ff7d179d546
+	0x7ff7d17f9bd4
+	0x7ff7d17eb426
+	0x7ff7d18219da
+	0x7ff7d17eaca6
+	0x7ff7d184591c
+	0x7ff7d17e9098
+	0x7ff7d17e9f83
+	0x7ff7d1cd7810
+	0x7ff7d1cd1afd
+	0x7ff7d1cf2c1a
+	0x7ff7d1a23345
+	0x7ff7d1a2b81c
+	0x7ff7d1a11924
+	0x7ff7d1a11ad6
+	0x7ff7d19f7e47
+	0x7fff77357374
+	0x7fff77cbcc91
+</msg>
+<arg>${BUTTON_SUBMIT}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="FAIL" start="2026-03-02T16:04:24.406862" elapsed="0.174280">ElementNotInteractableException: Message: element not interactable
+  (Session info: chrome=145.0.7632.117)
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0x7ff7d1caaa55
+	0x7ff7d1a08630
+	0x7ff7d179d546
+	0x7ff7d17f9bd4
+	0x7ff7d17eb426
+	0x7ff7d18219da
+	0x7ff7d17eaca6
+	0x7ff7d184591c
+	0x7ff7d17e9098
+	0x7ff7d17e9f83
+	0x7ff7d1cd7810
+	0x7ff7d1cd1afd
+	0x7ff7d1cf2c1a
+	0x7ff7d1a23345
+	0x7ff7d1a2b81c
+	0x7ff7d1a11924
+	0x7ff7d1a11ad6
+	0x7ff7d19f7e47
+	0x7fff77357374
+	0x7fff77cbcc91
+</status>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2026-03-02T16:04:24.581289" elapsed="0.000023"/>
+</kw>
+<doc>Clica no botão de submissão</doc>
+<status status="FAIL" start="2026-03-02T16:04:24.406669" elapsed="0.174726">ElementNotInteractableException: Message: element not interactable
+  (Session info: chrome=145.0.7632.117)
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0x7ff7d1caaa55
+	0x7ff7d1a08630
+	0x7ff7d179d546
+	0x7ff7d17f9bd4
+	0x7ff7d17eb426
+	0x7ff7d18219da
+	0x7ff7d17eaca6
+	0x7ff7d184591c
+	0x7ff7d17e9098
+	0x7ff7d17e9f83
+	0x7ff7d1cd7810
+	0x7ff7d1cd1afd
+	0x7ff7d1cf2c1a
+	0x7ff7d1a23345
+	0x7ff7d1a2b81c
+	0x7ff7d1a11924
+	0x7ff7d1a11ad6
+	0x7ff7d19f7e47
+	0x7fff77357374
+	0x7fff77cbcc91
+</status>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2026-03-02T16:04:24.581648" elapsed="0.000042"/>
+</kw>
+<kw name="Fechar Navegador" owner="site_keywords" type="TEARDOWN">
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2026-03-02T16:04:24.582329" elapsed="2.086449"/>
+</kw>
+<doc>Fecha o navegador</doc>
+<status status="PASS" start="2026-03-02T16:04:24.582120" elapsed="2.086810"/>
+</kw>
+<doc>Testa variações de XSS com "&gt;</doc>
+<tag>alta</tag>
+<tag>segurança</tag>
+<tag>xss</tag>
+<status status="FAIL" start="2026-03-02T16:04:22.311008" elapsed="4.358174">ElementNotInteractableException: Message: element not interactable
+  (Session info: chrome=145.0.7632.117)
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0x7ff7d1caaa55
+	0x7ff7d1a08630
+	0x7ff7d179d546
+	0x7ff7d17f9bd4
+	0x7ff7d17eb426
+	0x7ff7d18219da
+	0x7ff7d17eaca6
+	0x7ff7d184591c
+	0x7ff7d17e9098
+	0x7ff7d17e9f83
+	0x7ff7d1cd7810
+	0x7ff7d1cd1afd
+	0x7ff7d1cf2c1a
+	0x7ff7d1a23345
+	0x7ff7d1a2b81c
+	0x7ff7d1a11924
+	0x7ff7d1a11ad6
+	0x7ff7d19f7e47
+	0x7fff77357374
+	0x7fff77cbcc91
+</status>
+</test>
+<test id="s1-t6" name="SEC005 - SQL Injection com UNION" line="234">
+<kw name="Abrir Navegador" owner="site_keywords">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-03-02T16:04:26.671146" level="INFO">Opening browser 'chrome' to base url 'https://qualidade.apprbs.com.br/site'.</msg>
+<arg>${BASE_URL}</arg>
+<arg>chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-03-02T16:04:26.671009" elapsed="1.674357"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2026-03-02T16:04:28.345534" elapsed="0.025015"/>
+</kw>
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>${FORM_CONTAINER}</arg>
+<arg>${TIMEOUT_PADRAO}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2026-03-02T16:04:28.370721" elapsed="0.233991"/>
+</kw>
+<doc>Abre o browser e acessa o site</doc>
+<status status="PASS" start="2026-03-02T16:04:26.670809" elapsed="1.934006"/>
+</kw>
+<kw name="Preencher Campo Nome" owner="site_keywords">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-03-02T16:04:28.605542" level="INFO">Typing text '' UNION SELECT NULL --' into text field '//input[@name="pessoa.nome"]'.</msg>
+<arg>${INPUT_NOME}</arg>
+<arg>${nome}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-03-02T16:04:28.605389" elapsed="0.098365"/>
+</kw>
+<arg>' UNION SELECT NULL --</arg>
+<doc>Preenche o campo de nome</doc>
+<status status="PASS" start="2026-03-02T16:04:28.605171" elapsed="0.098715"/>
+</kw>
+<kw name="Preencher Campo Email" owner="site_keywords">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-03-02T16:04:28.704652" level="INFO">Typing text 'teste@example.com' into text field '//input[@name="pessoa.emailPrincipal"]'.</msg>
+<arg>${INPUT_EMAIL}</arg>
+<arg>${email}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-03-02T16:04:28.704492" elapsed="0.083190"/>
+</kw>
+<arg>teste@example.com</arg>
+<doc>Preenche o campo de email</doc>
+<status status="PASS" start="2026-03-02T16:04:28.704262" elapsed="0.083528"/>
+</kw>
+<kw name="Preencher Campo Telefone" owner="site_keywords">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-03-02T16:04:28.788554" level="INFO">Typing text '(11) 99999-9999' into text field '//input[@name="pessoa.telefonePrincipal"]'.</msg>
+<arg>${INPUT_TELEFONE}</arg>
+<arg>${telefone}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-03-02T16:04:28.788390" elapsed="0.069607"/>
+</kw>
+<arg>(11) 99999-9999</arg>
+<doc>Preenche o campo de telefone</doc>
+<status status="PASS" start="2026-03-02T16:04:28.788152" elapsed="0.069950"/>
+</kw>
+<kw name="Submeter Formulário" owner="site_keywords">
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2026-03-02T16:04:28.858799" level="INFO">Clicking button '(//button)[2]'.</msg>
+<msg time="2026-03-02T16:04:29.041423" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-55.png"&gt;&lt;img src="selenium-screenshot-55.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg time="2026-03-02T16:04:29.041544" level="FAIL">ElementNotInteractableException: Message: element not interactable
+  (Session info: chrome=145.0.7632.117)
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0x7ff7d1caaa55
+	0x7ff7d1a08630
+	0x7ff7d179d546
+	0x7ff7d17f9bd4
+	0x7ff7d17eb426
+	0x7ff7d18219da
+	0x7ff7d17eaca6
+	0x7ff7d184591c
+	0x7ff7d17e9098
+	0x7ff7d17e9f83
+	0x7ff7d1cd7810
+	0x7ff7d1cd1afd
+	0x7ff7d1cf2c1a
+	0x7ff7d1a23345
+	0x7ff7d1a2b81c
+	0x7ff7d1a11924
+	0x7ff7d1a11ad6
+	0x7ff7d19f7e47
+	0x7fff77357374
+	0x7fff77cbcc91
+</msg>
+<arg>${BUTTON_SUBMIT}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="FAIL" start="2026-03-02T16:04:28.858648" elapsed="0.183984">ElementNotInteractableException: Message: element not interactable
+  (Session info: chrome=145.0.7632.117)
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0x7ff7d1caaa55
+	0x7ff7d1a08630
+	0x7ff7d179d546
+	0x7ff7d17f9bd4
+	0x7ff7d17eb426
+	0x7ff7d18219da
+	0x7ff7d17eaca6
+	0x7ff7d184591c
+	0x7ff7d17e9098
+	0x7ff7d17e9f83
+	0x7ff7d1cd7810
+	0x7ff7d1cd1afd
+	0x7ff7d1cf2c1a
+	0x7ff7d1a23345
+	0x7ff7d1a2b81c
+	0x7ff7d1a11924
+	0x7ff7d1a11ad6
+	0x7ff7d19f7e47
+	0x7fff77357374
+	0x7fff77cbcc91
+</status>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2026-03-02T16:04:29.042775" elapsed="0.000022"/>
+</kw>
+<doc>Clica no botão de submissão</doc>
+<status status="FAIL" start="2026-03-02T16:04:28.858445" elapsed="0.184433">ElementNotInteractableException: Message: element not interactable
+  (Session info: chrome=145.0.7632.117)
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0x7ff7d1caaa55
+	0x7ff7d1a08630
+	0x7ff7d179d546
+	0x7ff7d17f9bd4
+	0x7ff7d17eb426
+	0x7ff7d18219da
+	0x7ff7d17eaca6
+	0x7ff7d184591c
+	0x7ff7d17e9098
+	0x7ff7d17e9f83
+	0x7ff7d1cd7810
+	0x7ff7d1cd1afd
+	0x7ff7d1cf2c1a
+	0x7ff7d1a23345
+	0x7ff7d1a2b81c
+	0x7ff7d1a11924
+	0x7ff7d1a11ad6
+	0x7ff7d19f7e47
+	0x7fff77357374
+	0x7fff77cbcc91
+</status>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2026-03-02T16:04:29.043149" elapsed="0.000052"/>
+</kw>
+<kw name="Fechar Navegador" owner="site_keywords" type="TEARDOWN">
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2026-03-02T16:04:29.043740" elapsed="2.090479"/>
+</kw>
+<doc>Fecha o navegador</doc>
+<status status="PASS" start="2026-03-02T16:04:29.043568" elapsed="2.090766"/>
+</kw>
+<doc>Teste avançado de SQL Injection</doc>
+<tag>crítica</tag>
+<tag>segurança</tag>
+<tag>sql_injection</tag>
+<status status="FAIL" start="2026-03-02T16:04:26.670468" elapsed="4.464107">ElementNotInteractableException: Message: element not interactable
+  (Session info: chrome=145.0.7632.117)
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0x7ff7d1caaa55
+	0x7ff7d1a08630
+	0x7ff7d179d546
+	0x7ff7d17f9bd4
+	0x7ff7d17eb426
+	0x7ff7d18219da
+	0x7ff7d17eaca6
+	0x7ff7d184591c
+	0x7ff7d17e9098
+	0x7ff7d17e9f83
+	0x7ff7d1cd7810
+	0x7ff7d1cd1afd
+	0x7ff7d1cf2c1a
+	0x7ff7d1a23345
+	0x7ff7d1a2b81c
+	0x7ff7d1a11924
+	0x7ff7d1a11ad6
+	0x7ff7d19f7e47
+	0x7fff77357374
+	0x7fff77cbcc91
+</status>
+</test>
+<doc>Testes para Site-site2 (https://qualidade.apprbs.com.br/site)</doc>
+<status status="FAIL" start="2026-03-02T16:04:04.145131" elapsed="26.990877"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="6" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="0" fail="2" skip="0">alta</stat>
+<stat pass="0" fail="3" skip="0">crítica</stat>
+<stat pass="0" fail="1" skip="0">média</stat>
+<stat pass="0" fail="6" skip="0">segurança</stat>
+<stat pass="0" fail="2" skip="0">sql_injection</stat>
+<stat pass="0" fail="1" skip="0">validação</stat>
+<stat pass="0" fail="2" skip="0">xss</stat>
+</tag>
+<suite>
+<stat pass="0" fail="6" skip="0" id="s1" name="Site Tests">Site Tests</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

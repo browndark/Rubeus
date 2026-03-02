@@ -1,0 +1,12 @@
+# Dependências - Site-site2
+
+# Robot Framework
+robot-framework==7.0
+robotframework-seleniumlibrary==6.1.3
+webdrivermanager==2.0.0
+
+# Selenium
+selenium==4.15.2
+
+# Utilidades
+requests==2.31.0
